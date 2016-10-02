@@ -44,7 +44,7 @@ def build_model_data(height, weight):
     y = weight
     x = height
     num_samples = len(y)
-    tx = np.c_[np.ones(num_samples), x]
+    tx = np.c_[np.ones(num_samples), x] # Prefix with ones (X~)s
     return y, tx
 
 
