@@ -4,13 +4,14 @@
 import numpy as np
 
 
-def compute_loss(y, tx, w):
-    """Calculate the loss.
+def compute_loss(y, tx, w, mae = False):
+    loss = 0
+    N = y.shape[0]
+    e = y-np.dot(tx,w)
+    
+    if mae:
+        loss = 1/N * np.sum(np.absolute(e))
+    else:
+        loss = 1/(2*N) * (np.dot(np.transpose(e),e))
 
-    You can calculate the loss using mse or mae.
-    """
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: compute loss by MSE / MAE
-    # ***************************************************
-    raise NotImplementedError
+    return loss

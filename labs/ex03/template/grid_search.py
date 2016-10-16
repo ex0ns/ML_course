@@ -20,9 +20,10 @@ def get_best_parameters(w0, w1, losses):
     min_row, min_col = np.unravel_index(np.argmin(losses), losses.shape)
     return losses[min_row, min_col], w0[min_row], w1[min_col]
 
-
-# ***************************************************
-# INSERT YOUR CODE HERE
-# TODO: Paste your implementation of grid_search
-#       here when it is done.
-# ***************************************************
+def grid_search(y, tx, w0, w1):
+    """Algorithm for grid search."""
+    losses = np.zeros((len(w0), len(w1)))
+    for idx, i in enumerate(w0):
+        for idx2, j in enumerate(w1):
+            losses[idx][idx2] = compute_loss(y, tx, [i,j])
+    return losses
